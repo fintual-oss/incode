@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="react-native-incode-sdk-usage-guide">react-native-incode-sdk Usage guide</h1>
+<p>Contents:</p>
+<ul>
+<li>
+<p><a href="#installation">Installation</a></p>
+</li>
+<li>
+<p><a href="#Additional-setup-for-iOS">Additional setup for iOS</a></p>
+</li>
+<li>
+<p><a href="#Additional-setup-for-Android">Additional setup for Android</a></p>
+</li>
+<li>
+<p><a href="#installation">Installation</a></p>
+<ul>
+<li><a href="#Usage-Example">Usage Example</a></li>
+<li><a href="#Flow-configuration-and-execution">Flow configuration and execution</a></li>
+<li><a href="#Supported-modules">Supported modules</a></li>
+<li><a href="#Modules-interdependencies">Modules interdependencies</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#Flow-execution-results">Flow execution results</a></p>
+</li>
+<li>
+<p><a href="#Modules-configuration">Modules configuration</a></p>
+</li>
+<li>
+<p><a href="#Flow-listeners">Flow listeners</a></p>
+<ul>
+<li><a href="#User-cancellation">User cancellation</a></li>
+<li><a href="#Step-completion">Step completion</a>
+<ul>
+<li><a href="#IdScan">IdScan</a></li>
+<li><a href="#Conference">Conference</a></li>
+<li><a href="#DocumentScan">DocumentScan</a></li>
+<li><a href="#Geolocation">Geolocation</a></li>
+<li><a href="#FaceMatch">FaceMatch</a></li>
+<li><a href="#Phone">Phone</a></li>
+<li><a href="#Signature">Signature</a></li>
+<li><a href="#SelfieScan">SelfieScan</a></li>
+<li><a href="#Approve">Approve</a></li>
+<li><a href="#UserScore">UserScore</a></li>
+<li><a href="#QrScan">QrScan</a></li>
+<li><a href="#VideoSelfie">VideoSelfie</a></li>
+<li><a href="#Captcha">Captcha</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#Other-API-methods">Other API methods</a></p>
+<ul>
+<li><a href="#Get-User-Score-Api">Get user score API</a></li>
+<li><a href="#Approve-API">Approve API</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<pre class="hljs"><code><div>npm install https://sdk-js.s3.amazonaws.com/react-native/react-native-incode-sdk-1.0.0.tgz
+</div></code></pre>
+<h2 id="additional-setup-for-ios">Additional setup for iOS</h2>
+<p>After installation, it's necessary to do the linking for the iOS, after running the command above.</p>
+<ol>
+<li>Change your Podfile so it requires deployment target 11 or higher.</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-deletion">-platform :ios, '10.0'</span>
+<span class="hljs-addition">+platform :ios, '11.0'</span>
+</div></code></pre>
+<ol start="2">
+<li>
+<p>Add an empty Swift file (e.g. Void.swift) through xCode to your native project. When prompted for a bridging header, choose <strong>Create Bridging header</strong>.</p>
+</li>
+<li>
+<p>Relying on React Native's auto-linking, run the following:</p>
+</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> ios &amp;&amp; pod install <span class="hljs-built_in">cd</span> ..
+</div></code></pre>
+<ol start="4">
+<li>Adapt <code>Info.plist</code> by adding:</li>
+</ol>
+<ul>
+<li><code>NSCameraUsageDescription</code>. The SDK uses the camera in order to verify the identity of the customer, e.g. in ID scan, Selfie scan and so on.</li>
+<li><code>NSLocationWhenInUseUsageDescription</code>. The SDK uses the current user location in order to detect exact location for Geolocation step.</li>
+<li><code>NSMicrophoneUsageDescription</code>. The SDK uses microphone for performing a video call during Video Conference step or for doing speech recognition during Video Selfie.</li>
+</ul>
+<h2 id="additional-setup-for-android">Additional setup for Android</h2>
+<p>In order to use Incode in Android, modify your <code>build.gradle</code> so it contains Artifactory username and password, provided by Incode.</p>
+<pre class="hljs"><code><div>allprojects {
+  repositories {
+    ...
+<span class="hljs-addition">+    maven {</span>
+<span class="hljs-addition">+      url "http://repo.incode.com/artifactory/libs-incode-welcome"</span>
+<span class="hljs-addition">+      credentials {</span>
+<span class="hljs-addition">+        username = "ARTIFACTORY_USERNAME"</span>
+<span class="hljs-addition">+        password = "ARTIFACTORY_PASSWORD"</span>
+<span class="hljs-addition">+      }</span>
+<span class="hljs-addition">+    }</span>
+    ...
+  }
+}
+</div></code></pre>
+<h1 id="usage">Usage</h1>
+<p>The typical basis workflow includes the following steps:</p>
+<ol>
+<li>Explicitly initialize IncodeSdk</li>
+<li>After waiting for the SDK to be initialized, configure Incode Onboarding Flow, by selecting modules (steps) you need</li>
+<li>Register listeners for steps-related events (e.g. step completion, step update, step failure)</li>
+<li>Run the Onboarding flow</li>
+</ol>
+<h2 id="usage-example">Usage Example</h2>
+<p>In order to use Incode SDK, it is necessary to provide the API key and URL you're given by Incode (see below).</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> IncodeSdk <span class="hljs-keyword">from</span> <span class="hljs-string">'react-natve-incode-sdk'</span>;
+<span class="hljs-keyword">import</span> { View, TouchableOpacity } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-native'</span>;
+
+<span class="hljs-keyword">const</span> StartOnboardingButton = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-comment">// 1. initialization</span>
+  <span class="hljs-keyword">const</span> initializeAndRunOnboarding = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    IncodeSdk.initialize({
+      <span class="hljs-attr">testMode</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">apiConfig</span>: {
+        <span class="hljs-attr">key</span>: <span class="hljs-string">'YOUR API KEY HERE'</span>,
+        <span class="hljs-attr">url</span>: <span class="hljs-string">'YOUR API URL HERE'</span>,
+        <span class="hljs-attr">regionCode</span>: <span class="hljs-string">'ALL'</span>,
+      },
+    })
+      .then(<span class="hljs-function">(<span class="hljs-params">_</span>) =&gt;</span> {
+        <span class="hljs-comment">// 2. configure and start onboarding</span>
+        startOnboarding();
+      })
+      .catch(<span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Incode SDK failed init'</span>, e));
+  };
+
+  <span class="hljs-keyword">const</span> startOnboarding = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+    IncodeSdk.startOnboarding({
+      <span class="hljs-attr">config</span>: [
+        { <span class="hljs-attr">module</span>: <span class="hljs-string">'IdScan'</span>, <span class="hljs-attr">idType</span>: <span class="hljs-string">'id'</span> },
+        { <span class="hljs-attr">module</span>: <span class="hljs-string">'SelfieScan'</span> },
+        { <span class="hljs-attr">module</span>: <span class="hljs-string">'FaceMatch'</span> },
+        { <span class="hljs-attr">module</span>: <span class="hljs-string">'UserScore'</span>, <span class="hljs-attr">mode</span>: <span class="hljs-string">'accurate'</span> },
+      ],
+    })
+      .then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(result);
+      })
+      .catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(error));
+
+  <span class="hljs-comment">// 3: register listeners for relevant events when the component gets mounted</span>
+  React.useEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> unsubscribers = setupListeners(); <span class="hljs-comment">//defined below</span>
+
+    <span class="hljs-comment">// return a function unregistering all your listeners (called when component is unmounted)</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      unsubscribers.forEach(<span class="hljs-function">(<span class="hljs-params">unsubscriber</span>) =&gt;</span> unsubscriber());
+    };
+  }, []);
+
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TouchableOpacity</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"Start onboarding!"</span> <span class="hljs-attr">onPress</span>=<span class="hljs-string">{runOnboarding}</span> /&gt;</span></span>;
+};
+
+<span class="hljs-keyword">const</span> setupListeners = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-comment">// returns a callback to unregister your listener, e.g. when your screen is getting unmounted</span>
+  <span class="hljs-keyword">const</span> complete = IncodeSdk.onStepCompleted;
+  <span class="hljs-keyword">return</span> [
+    complete({
+      <span class="hljs-attr">module</span>: <span class="hljs-string">'IdScan'</span>,
+      <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'ID scan result'</span>, e.result);
+      },
+    }),
+    complete({
+      <span class="hljs-attr">module</span>: <span class="hljs-string">'SelfieScan'</span>,
+      <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Selfie scan complete'</span>, e.result);
+      },
+    }),
+
+    complete({
+      <span class="hljs-attr">module</span>: <span class="hljs-string">'FaceMatch'</span>,
+      <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Face match complete'</span>, e.result);
+      },
+    }),
+    complete({
+      <span class="hljs-attr">module</span>: <span class="hljs-string">'UserScore'</span>,
+      <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'User Score'</span>, e.result);
+      },
+    }),
+  ];
+};
+</div></code></pre>
+<h2 id="flow-configuration-and-execution">Flow configuration and execution</h2>
+<p>The modules are declared as an array of objects, each representing a module we wish to include as a step of the Onboarding flow.
+The order of modules' configuration in the array of configurations determines the order of steps in the Onboarding flow.</p>
+<p>The flow should be started after waiting on initialization to complete, as follows:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">try</span>{
+  <span class="hljs-keyword">await</span> IncodeSdk.initialize({
+    <span class="hljs-attr">api</span>: { <span class="hljs-attr">url</span>: <span class="hljs-string">'API_URL'</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">'API_KEY'</span> },
+  });
+} <span class="hljs-keyword">catch</span> (e){
+  <span class="hljs-comment">// Init failed, most likely due to configuration issues</span>
+}
+<span class="hljs-keyword">try</span>{
+  <span class="hljs-keyword">const</span> onboardingFlowStatus = <span class="hljs-keyword">await</span> IncodeSdk.startOnboarding([
+    <span class="hljs-comment">// array of config objects, see example</span>
+  ]);
+}<span class="hljs-keyword">catch</span>(e){
+  <span class="hljs-comment">// flow failed</span>
+}
+}
+</div></code></pre>
+<h2 id="supported-modules">Supported modules</h2>
+<p>The modules supported by the SDK are listed here, and elaborated in more detail throughout the rest of this document.</p>
+<ul>
+<li><code>Phone</code></li>
+<li><code>DocumentScan</code></li>
+<li><code>Geolocation</code></li>
+<li><code>Signature</code></li>
+<li><code>VideoSelfie</code>
+<ul>
+<li>⚠️ Android note: Available only for API level 21+.</li>
+</ul>
+</li>
+<li><code>IdScan</code></li>
+<li><code>Conference</code></li>
+<li><code>SelfieScan</code></li>
+<li><code>FaceMatch</code></li>
+<li><code>QrScan</code></li>
+<li><code>Approve</code></li>
+<li><code>UserScore</code></li>
+</ul>
+<h3 id="modules-interdependencies">Modules interdependencies</h3>
+<p>The order of the modules in the config array indicates the execution order.
+Note that:</p>
+<ul>
+<li><code>FaceMatch</code> module expects <code>IdScan</code> and <code>SelfieScan</code> to have executed, in order to perform the match. In other words, <code>IdScan</code> and <code>SelfieScan</code> must precede <code>FaceMatch</code></li>
+<li><code>UserScore</code> module should succeed all other modules (must be at the end)</li>
+<li><code>Approve</code> module should succeed all other modules (must be at the end)</li>
+<li>The <code>UserScore</code> and <code>Approve</code> modules do not depend on each other, so their order can be arbitrary.</li>
+</ul>
+<h1 id="flow-execution-results">Flow execution results</h1>
+<p>When the flow completes, the promise <code>startOnboarding</code> will contain the execution status:</p>
+<pre class="hljs"><code><div>{ <span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span> }
+</div></code></pre>
+<p>In case the user cancels the process, the <code>status</code> will be <code>user_cancelled</code>.</p>
+<p>In case the execution can not be completed, the <code>startOnboarding</code> promise will be rejected. This can happen:</p>
+<ul>
+<li>if the user cancels the process</li>
+<li>if the user fails to enter the correct captcha for 3 times (given the Captcha module is included)</li>
+</ul>
+<h1 id="modules-configuration">Modules configuration</h1>
+<p>Common configuration needed for each module includes:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Parameter name</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>moduleName</code></td>
+<td>Mandatory. The name of the module we wish to include</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>enabled</code></td>
+<td>Optional: Whether or not the module is needed in the flow</td>
+</tr>
+</tbody>
+</table>
+<p>Below is the list of all available module names, with additional configuration parameters.</p>
+<ul>
+<li>Phone
+<ul>
+<li>no additional parameters</li>
+</ul>
+</li>
+<li>DocumentScan
+<ul>
+<li><code>showTutorial</code> (optional, defaults to <code>false</code>): Show tutorial for document scan.</li>
+</ul>
+</li>
+<li>Geolocation
+<ul>
+<li>no additional parameters</li>
+</ul>
+</li>
+<li>Signature
+<ul>
+<li>no additional parameters</li>
+</ul>
+</li>
+<li>VideoSelfie: Available only for API level 21+.
+<ul>
+<li><code>askForProofOfAddress</code> (optional, defaults to <code>true</code>): Ask for Proof of Address after ID detection.</li>
+<li><code>showTutorial</code> (optional, defaults to <code>false</code>): Show tutorial for video selfie.</li>
+<li><code>questionsCount</code> (optional, defaults to <code>3</code>): Choose number of questions for video selfie verbal confirmation steps.</li>
+<li><code>livenessCheck</code> (optional, defaults to <code>false</code>): Check for user liveness during video selfie.</li>
+</ul>
+</li>
+<li>IdScan
+<ul>
+<li><code>showTutorial</code> (optional, defaults to <code>true</code>): boolean</li>
+<li><code>idType</code> (optional): <code>id</code> or <code>passport</code>. If omitted, the app will display a chooser to the user.</li>
+</ul>
+</li>
+<li>Conference
+<ul>
+<li><code>disableMicOnStart</code>: boolean</li>
+</ul>
+</li>
+<li>SelfieScan
+<ul>
+<li><code>showTutorial</code> (optional, defaults to <code>true</code>): boolean</li>
+</ul>
+</li>
+<li>FaceMatch
+<ul>
+<li>no additional parameters</li>
+<li>Note: has to be specified <strong>after IDScan and SelfieScan</strong> modules.</li>
+</ul>
+</li>
+<li>QrScan
+<ul>
+<li>no additional parameters</li>
+</ul>
+</li>
+<li>Approve
+<ul>
+<li><code>forceApproval</code> (optional, defaults to <code>false</code>): boolean - if <code>true</code> the user will be force-approved</li>
+</ul>
+</li>
+<li>UserScore
+<ul>
+<li><code>mode</code> (optional, defaults to <code>accurate</code>): <code>accurate</code> or <code>fast</code>. If <code>accurate</code> the results will be fetched from server, which may exhibit some latency, but will rely on server-side processing of information, which may be more reliable than on-device processing. If <code>fast</code>, then results based on on-device processing will be shown.</li>
+</ul>
+</li>
+</ul>
+<!-- For example, if you wish to include the Conference module, following would be valid configurations: -->
+<h1 id="flow-listeners">Flow listeners</h1>
+<p>The SDK offers several types of listeners:</p>
+<ul>
+<li>user cancellation</li>
+<li>step completion, for each module individually</li>
+<li>step error, for each module individually</li>
+<li>step update, for each module individually</li>
+</ul>
+<h2 id="user-cancellation">User cancellation</h2>
+<p>If the user cancels the onboarding, the listener <code>IncodeSdk.onCancelled(whenUserCancels);</code> will fire.
+On Android, the user can cancel by pressing the back key. On iOS the user can not cancel.</p>
+<!-- TODO: check if we always treat this as an event or as promise failure! -->
+<h2 id="step-completion">Step completion</h2>
+<p>When a step within the configured Onboarding flow is completed, the information can be obtained by registering a listener via <code>IncodeSdk.onStepCompleted</code>. This takes two arguments: (1) the module name and (2) the callback.</p>
+<pre class="hljs"><code><div>IncodeSdk.onStepCompleted({
+  <span class="hljs-attr">module</span>: <span class="hljs-string">'IdScan'</span>,
+  <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">idScanResult</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'IdScan complete'</span>);
+    <span class="hljs-built_in">console</span>.log(idScanResult.result.data);
+    <span class="hljs-built_in">console</span>.log(idScanResult.result.status.front);
+    <span class="hljs-built_in">console</span>.log(idScanResult.result.status.back);
+  },
+});
+</div></code></pre>
+<h3 id="idscan">IdScan</h3>
+<ul>
+<li>data: the <code>OcrData</code> object, see example below</li>
+<li>status: the <code>IdValidationStatus</code> object, carrying statuses for the <code>front</code> side of the ID and the <code>back</code> side.</li>
+</ul>
+<p>If <code>response.status.front</code> or <code>response.status.back</code> has a value other than <code>ok</code> you can consider the ID scan and/or validation did not come through successfully.</p>
+<p>Example response for <strong>completion</strong> of the step:
+Example:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"result"</span>: {
+    <span class="hljs-attr">"data"</span>: {
+      <span class="hljs-attr">"address"</span>: {
+        <span class="hljs-attr">"city"</span>: <span class="hljs-string">"Springfield"</span>,
+        <span class="hljs-attr">"colony"</span>: <span class="hljs-string">"Springfield"</span>,
+        <span class="hljs-attr">"postalCode"</span>: <span class="hljs-string">"555555"</span>,
+        <span class="hljs-attr">"state"</span>: <span class="hljs-string">"Serbia"</span>,
+        <span class="hljs-attr">"street"</span>: <span class="hljs-string">"Evergreen terrace"</span>
+      },
+      <span class="hljs-attr">"fullAddress"</span>: <span class="hljs-string">"127 evergreen terrace"</span>,
+      <span class="hljs-attr">"birthDate"</span>: <span class="hljs-string">"Sat Dec 27 1969 01:25:55 GMT+0100 (Central European Standard Time)"</span>,
+      <span class="hljs-attr">"expirationDate"</span>: <span class="hljs-string">"2024"</span>,
+      <span class="hljs-attr">"gender"</span>: <span class="hljs-string">"M"</span>,
+      <span class="hljs-attr">"issueDate"</span>: <span class="hljs-string">"2014"</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Homer Jay Simpson"</span>,
+      <span class="hljs-attr">"numeroEmisionCredencial"</span>: <span class="hljs-string">"01"</span>
+    },
+    <span class="hljs-attr">"status"</span>: { <span class="hljs-attr">"back"</span>: <span class="hljs-string">"ok"</span>, <span class="hljs-attr">"front"</span>: <span class="hljs-string">"ok"</span> }
+  },
+  <span class="hljs-attr">"step"</span>: <span class="hljs-string">"IdScan"</span>
+}
+</div></code></pre>
+<p>Notes:</p>
+<ul>
+<li><code>result.data.birthDate</code> is the epoch time.</li>
+<li><code>result.status.back</code> and <code>result.status.front</code> can take one of following values: <code>ok</code> or several others indicating an issue with the scanning. The Incode UII should clearly inform the user about these errors and will attempt the Scan several times, before responding with an error. It is advised not to go into too much detail on these specifc errors. Other errors are: <code>errorClassification</code>, <code>noFacesFound</code>, <code>errorCropQuality</code>, <code>errorGlare</code>, <code>errorReadability</code>, <code>errorSharpness</code>, <code>errorTypeMismatch</code>, <code>userCancelled</code>, <code>unknownError</code>, <code>errorClassification</code>, <code>shadow</code>, <code>errorAddress</code>, <code>errorPassportClassification</code>, <code>errorReadability</code>.</li>
+</ul>
+<h3 id="conference">Conference</h3>
+<p>This module starts a video conference call with the executive.</p>
+<p>Example response for <strong>completion</strong> of the step:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"step"</span>: <span class="hljs-string">"Conference"</span>,
+  <span class="hljs-attr">"result"</span>: {
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span>
+  }
+}
+</div></code></pre>
+<p>Example response for <strong>error</strong> of the step:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"step"</span>: <span class="hljs-string">"Conference"</span>,
+  <span class="hljs-attr">"result"</span>: {
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"error"</span>
+  }
+}
+</div></code></pre>
+<p>The field <code>result.status</code> can have values <code>userCancelled</code>, <code>invalidSession</code> or <code>error</code>;</p>
+<h3 id="documentscan">DocumentScan</h3>
+<p>The DocumentScan will attempt reading address from the provided document.</p>
+<p>Note: If the user decides to skip this step, you will get a response with blank values, instead of nil/error.</p>
+<p>Example response for <strong>completion</strong> of the step:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"result"</span>: {
+    <span class="hljs-attr">"address"</span>: {
+      <span class="hljs-attr">"city"</span>: <span class="hljs-string">"Springfield"</span>,
+      <span class="hljs-attr">"colony"</span>: <span class="hljs-string">"Springfield"</span>,
+      <span class="hljs-attr">"postalCode"</span>: <span class="hljs-string">"555555"</span>,
+      <span class="hljs-attr">"state"</span>: <span class="hljs-string">"Serbia"</span>,
+      <span class="hljs-attr">"street"</span>: <span class="hljs-string">"Evergreen terrace"</span>
+    },
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"userCancelled"</span>
+  },
+  <span class="hljs-attr">"step"</span>: <span class="hljs-string">"DocumentScan"</span>
+}
+</div></code></pre>
+<p>Example response for <strong>error</strong> of the step:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"userCancelled"</span>,
+  <span class="hljs-attr">"step"</span>: <span class="hljs-string">"DocumentScan"</span>
+}
+</div></code></pre>
+<p>The field <code>status</code> can have one of the following values: <code>permissionsDenied</code>, <code>simulatorDetected</code> or <code>unknown</code>.</p>
+<h3 id="geolocation">Geolocation</h3>
+<p>The Geolocation steps yields the current location of the user. Example response for <strong>completion</strong> of the step:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"result"</span>: {
+    <span class="hljs-attr">"city"</span>: <span class="hljs-string">"Springfield"</span>,
+    <span class="hljs-attr">"colony"</span>: <span class="hljs-string">"Springfield"</span>,
+    <span class="hljs-attr">"postalCode"</span>: <span class="hljs-string">"555555"</span>,
+    <span class="hljs-attr">"state"</span>: <span class="hljs-string">"Serbia"</span>,
+    <span class="hljs-attr">"street"</span>: <span class="hljs-string">"Evergreen terrace"</span>
+  },
+  <span class="hljs-attr">"step"</span>: <span class="hljs-string">"Geolocation"</span>
+}
+</div></code></pre>
+<p>The field <code>status</code> can have one of the following values: <code>permissionsDenied</code>, <code>unknownError</code> or <code>noLocationExtracted</code>.</p>
+<h3 id="facematch">FaceMatch</h3>
+<p>This module checks if the face from the scanned ID/passport and the face obtained from the SelfieScan module are a match.</p>
+<p>Example response for <strong>completion</strong> of the step:</p>
+<pre class="hljs"><code><div>{ <span class="hljs-attr">"result"</span>: { <span class="hljs-attr">"status"</span>: <span class="hljs-string">"mismatch"</span> }, <span class="hljs-attr">"step"</span>: <span class="hljs-string">"FaceMatch"</span> }
+</div></code></pre>
+<p>The field <code>result.status</code> can take values <code>match</code> or <code>mismatch</code>.
+Example response for <strong>error</strong> of the step:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"userCancelled"</span>,
+  <span class="hljs-attr">"step"</span>: <span class="hljs-string">"FaceMatch"</span>
+}
+</div></code></pre>
+<p>The field <code>status</code> can have one of values: <code>unknownError</code> or <code>simulatorDetected</code>.</p>
+<h3 id="phone">Phone</h3>
+<p>This module enables the user to enter their phone number.
+Example response for <strong>completion</strong> of the step:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"result"</span>: { <span class="hljs-attr">"phone"</span>: <span class="hljs-string">"+15555555555"</span>, <span class="hljs-attr">"resultCode"</span>: <span class="hljs-string">"success"</span> },
+  <span class="hljs-attr">"step"</span>: <span class="hljs-string">"Phone"</span>
+}
+</div></code></pre>
+<p>The field <code>result.resultCode</code> can take the value <code>success</code>.</p>
+<p>Example response for <strong>error</strong> of the step:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"error"</span>,
+  <span class="hljs-attr">"step"</span>: <span class="hljs-string">"Phone"</span>
+}
+</div></code></pre>
+<p>The field <code>status</code> can take one of the values: <code>invalidSession</code>, <code>userCancelled</code>, <code>error</code>.</p>
+<h3 id="signature">Signature</h3>
+<p>This module enables user to add a digital signature by signing on a canvas.</p>
+<p>Example response for <strong>completion</strong> of the step:</p>
+<pre class="hljs"><code><div>{ <span class="hljs-attr">"result"</span>: { <span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span> }, <span class="hljs-attr">"step"</span>: <span class="hljs-string">"Signature"</span> }
+</div></code></pre>
+<p>Example response for <strong>error</strong> of the step:</p>
+<pre class="hljs"><code><div>{ <span class="hljs-attr">"status"</span>: <span class="hljs-string">"error"</span>, <span class="hljs-attr">"step"</span>: <span class="hljs-string">"Signature"</span> }
+</div></code></pre>
+<p>The field <code>status</code> can take one of following: <code>error</code> or <code>invalidSession</code>.</p>
+<h3 id="selfiescan">SelfieScan</h3>
+<p>Example result:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"result"</span>: { <span class="hljs-attr">"spoofAttempt"</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span> },
+  <span class="hljs-attr">"step"</span>: <span class="hljs-string">"SelfieScan"</span>
+}
+</div></code></pre>
+<ul>
+<li><code>result.spoofAttempt</code> will be true in case somebody tried to spoof the system, ie. use a photo or a video of a different person.</li>
+</ul>
+<p>Example response for <strong>error</strong> of the step:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span>,
+  <span class="hljs-attr">"step"</span>: <span class="hljs-string">"SelfieScan"</span>
+}
+</div></code></pre>
+<p>The field <code>status</code> can take one of the values: <code>none</code>, <code>permissionsDenied</code>, <code>simulatorDetected</code>, <code>spoofDetected</code>.</p>
+<h3 id="approve">Approve</h3>
+<p>Adding this module to the flow instructs the Incode server to perform the approval of the user.</p>
+<p>Example response for <strong>completion</strong> of the module:</p>
+<pre class="hljs"><code><div>{ <span class="hljs-attr">"result"</span>: { <span class="hljs-attr">"status"</span>: <span class="hljs-string">"approved"</span> }, <span class="hljs-attr">"step"</span>: <span class="hljs-string">"Approve"</span> }
+</div></code></pre>
+<ul>
+<li>The field <code>status</code> can take values: <code>approved</code> and <code>failed</code>.</li>
+</ul>
+<!-- - The field `id` is an identifier of the newly approved user. It may be missing on Android -->
+<p>Example response for <strong>error</strong> of the module: there is no error.</p>
+<h3 id="userscore">UserScore</h3>
+<p>This module displays the user score using the UI.</p>
+<p>Example response for <strong>completion</strong> of the module:</p>
+<!-- TODO: plug in a success completion response. -->
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"result"</span>: {
+    <span class="hljs-attr">"existingUser"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"facialRecognitionScore"</span>: <span class="hljs-string">"0.0/100"</span>,
+    <span class="hljs-attr">"idVerificationScore"</span>: <span class="hljs-string">"79.0/100"</span>,
+    <span class="hljs-attr">"livenessOverallScore"</span>: <span class="hljs-string">"95.2/100"</span>,
+    <span class="hljs-attr">"overallScore"</span>: <span class="hljs-string">"0.0/100"</span>,
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"fail"</span>
+  },
+  <span class="hljs-attr">"step"</span>: <span class="hljs-string">"UserScore"</span>
+}
+</div></code></pre>
+<p>This module shows the summary of the onboarding, based on all the modules you configured.</p>
+<p>Example response for <strong>error</strong> of the module:
+The field <code>result.status</code> can have one of the following values: <code>warning</code>, <code>unknown</code>, <code>manual</code> and <code>fail</code>.</p>
+<h3 id="qrscan">QrScan</h3>
+<p>This module captures the QR code on the back of the ID, extracts the valuable data out of it and sends it to the server.</p>
+<h3 id="videoselfie">VideoSelfie</h3>
+<p>This module records the device's screen while the user needs to do a selfie, show his ID, answer a couple of questions and confirms that he accept the terms and conditions. The recorded video is then uploaded and stored for later usage. During the selfie capture liveness check will be performed. Besides that, face recognition will be performed with the selfie image captured previously during the flow.</p>
+<h3 id="captcha">Captcha</h3>
+<p>This module asks the user to enter OTP generated for current session.
+If the user doesn't enter correct OTP multiple times the flow will be terminated.
+On module completion, the result given to the listener will take the shape of:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"result"</span>: {
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"success"</span>,
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"ABCDEF"</span>
+  }
+}
+</div></code></pre>
+<p>Note: Captcha failure will result in rejection of Onboarding promise. There is no module error listener here.</p>
+<h1 id="other-api-methods">Other API methods</h1>
+<p>Incode's SDK exposes additional operations: user approve and user score.</p>
+<h2 id="get-user-score-api">Get user score API</h2>
+<p>To fetch user score programmatically in order to evaluate it, you can use <code>IncodeSdk.getUserScore</code>.</p>
+<p>When the promise is fulfilled, the result will contain all the data like in the result field of the corresponding <a href="#UserScore">User Score</a> step.</p>
+<p>Configuraton is similar to <a href="#UserScore">User Score</a> step: this method can receive optional config parameter map: <code>{mode: 'accurate'}</code>. The <code>mode</code> parameter is optional: can take values <code>accurate</code> or <code>fast</code>.</p>
+<p>If config object or the <code>mode</code> is absent, then <code>accurate</code> is the default;</p>
+<pre class="hljs"><code><div>IncodeSdk.getUserScore().then(<span class="hljs-function">(<span class="hljs-params">score</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(score)); <span class="hljs-comment">// defaults to accurate</span>
+IncodeSdk.getUserScore({ <span class="hljs-attr">mode</span>: <span class="hljs-string">'accurate'</span> }).then(<span class="hljs-function">(<span class="hljs-params">score</span>) =&gt;</span>
+  <span class="hljs-built_in">console</span>.log(score)
+);
+IncodeSdk.getUserScore({ <span class="hljs-attr">mode</span>: <span class="hljs-string">'fast'</span> }).then(<span class="hljs-function">(<span class="hljs-params">score</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(score));
+</div></code></pre>
+<h2 id="approve-api">Approve API</h2>
+<p>To programmatically initiate approval of the user, you can use <code>IncodeSdk.approve</code>. It takes a config object, setting <code>forceApprove</code> (see <a href="#approve">approve module</a>). When the promise is fulfilled, the result will contain all the data like in the result field of the corresponding <a href="#Approve">Approve</a> step.</p>
+<pre class="hljs"><code><div>IncodeSdk.apprvove({ <span class="hljs-attr">forceApprove</span>: <span class="hljs-literal">false</span> }).then(<span class="hljs-function">(<span class="hljs-params">approval</span>) =&gt;</span>
+  <span class="hljs-built_in">console</span>.log(approval)
+);
+</div></code></pre>
+<h1 id="sections-execution-api">Sections execution API</h1>
+<p>The Sections execution API enables you to design a flow which executes in sections, whereas the regular onboarding flow is executed in a single go. You'd typically use this method to evaluate results of a module (e.g. ID Scan) in order to choose whether or not other modules (e.g. Geolocation) are needed. In this case ID Scan would be executed in one segment, and Geolocation would be executed in the following, if you decide to, based oon the ID Scan results. In between segments, the Incode's UI goes away, and you get to update UI and/or progress into the next segment.</p>
+<p>Here's an example:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> IncodeSdk <span class="hljs-keyword">from</span> <span class="hljs-string">'react-natve-incode-sdk'</span>;
+<span class="hljs-keyword">import</span> { View, TouchableOpacity } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-native'</span>;
+
+<span class="hljs-keyword">const</span> StartSegmentedOnboardingButton = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">const</span> [addressCity, setAddressCity] = useState(<span class="hljs-literal">null</span>);
+
+  <span class="hljs-keyword">const</span> executeSegmentedFlow = <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">await</span> IncodeSdk.initialize({
+      <span class="hljs-attr">testMode</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">apiConfig</span>: {
+        <span class="hljs-attr">key</span>: <span class="hljs-string">'f35844c8bcb417be1a64fd6e8d622cc93b0fcfaa'</span>,
+        <span class="hljs-attr">url</span>: <span class="hljs-string">'https://stage-api.incodesmile.com'</span>,
+        <span class="hljs-attr">regionCode</span>: <span class="hljs-string">'ALL'</span>,
+      },
+    });
+
+    <span class="hljs-keyword">const</span> unregisterIdScanListener = IncodeSdk.onStepCompleted({
+      <span class="hljs-attr">module</span>: <span class="hljs-string">'IdScan'</span>,
+      <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+        setAddressCity(e.result.data.address.city);
+      },
+    });
+
+    <span class="hljs-keyword">const</span> flow = <span class="hljs-keyword">await</span> IncodeSdk.createOnboardingFlow({});
+    <span class="hljs-keyword">const</span> id = <span class="hljs-keyword">await</span> IncodeSdk.startOnboardingSection({
+      <span class="hljs-attr">config</span>: [
+        {
+          <span class="hljs-attr">module</span>: <span class="hljs-string">'IdScan'</span>,
+        },
+      ],
+    });
+
+    <span class="hljs-comment">// In between first segment and choosing the following.</span>
+    <span class="hljs-comment">// The second segment, steps depend on the result of previous segment's execution</span>
+
+    <span class="hljs-comment">// the addressCity comes from the state, stored by the listener</span>
+    <span class="hljs-keyword">if</span> (addressCity != <span class="hljs-string">'ALVARO OBREGON'</span>) {
+      <span class="hljs-keyword">await</span> IncodeSdk.startOnboardingSection({
+        <span class="hljs-attr">config</span>: [{ <span class="hljs-attr">module</span>: <span class="hljs-string">'Geolocation'</span> }, { <span class="hljs-attr">module</span>: <span class="hljs-string">'SelfieScan'</span> }],
+      });
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">await</span> IncodeSdk.startOnboardingSection({
+        <span class="hljs-attr">config</span>: [{ <span class="hljs-attr">module</span>: <span class="hljs-string">'SelfieScan'</span> }],
+      });
+    }
+    IncodeSdk.finishOnboardingFlow();
+    unregisterIdScanListener();
+  };
+
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TouchableOpacity</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"Start onboarding!"</span> <span class="hljs-attr">onPress</span>=<span class="hljs-string">{runOnboarding}</span> /&gt;</span></span>;
+};
+</div></code></pre>
+<h1 id="customization">Customization</h1>
+<p>It is possible to customize the following:</p>
+<ul>
+<li>The text content displayed in the onboarding steps</li>
+<li>Styles for buttons, titles and so on</li>
+<li>Logo image, which is displayed on some screens</li>
+<li>Video tutorials.</li>
+</ul>
+<p>The customization is done independently for both platforms.</p>
+<h2 id="android">Android</h2>
+<p>In the example repo, you can find the following:</p>
+<ul>
+<li>
+<p><code>strings.xml</code> which contains example of translations definitions. The full list can be found at</p>
+</li>
+<li>
+<p><code>styles.xml</code> which contains styles for all of the components which can be styled</p>
+</li>
+<li>
+<p><code>onboard_sdk_logo_top</code> the</p>
+</li>
+</ul>
+<script src="https://gist.github.com/nvitorovic/7b443bba2af8d2cc2bbcd8d01f4a9f26.js"></script>
+
+</body>
+</html>
